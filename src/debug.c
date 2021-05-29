@@ -1742,6 +1742,7 @@ void doFastMemoryTest(void) {
 #endif /* HAVE_PROC_MAPS */
 }
 
+#ifdef HAVE_BACKTRACE
 /* Scans the (assumed) x86 code starting at addr, for a max of `len`
  * bytes, searching for E8 (callq) opcodes, and dumping the symbols
  * and the call offset if they appear to be valid. */
@@ -1797,6 +1798,7 @@ void dumpCodeAroundEIP(void *eip) {
         }
     }
 }
+#endif /* HAVE_PROC_MAPS */
 
 void sigsegvHandler(int sig, siginfo_t *info, void *secret) {
     UNUSED(secret);
